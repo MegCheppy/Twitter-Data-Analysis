@@ -1,1 +1,5 @@
 __pycache__/
+data/Economic_Twitter_Data.json
+data/merged-ke-ng-sa.json
+tests/Economic_Twitter_Data.json
+data/Economic_Twitter_Data.json
