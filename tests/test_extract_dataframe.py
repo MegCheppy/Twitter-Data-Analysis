@@ -1,4 +1,5 @@
 import unittest
+from numpy import source
 import pandas as pd
 import sys, os
  
@@ -33,9 +34,9 @@ class TestTweetDfExtractor(unittest.TestCase):
         self.assertEqual(self.df.find_statuses_count(), [40, 40, 40, 40, 40])
 
     def test_find_full_text(self):
-        test =  ['RT @nikitheblogger: Irre: Annalena Baerbo[96 chars]t e�']
 
-        self.assertEqual(self.df.find_full_text(),tet)
+        self.assertEqual(self.df.find_full_text(),test)
+        test = ['RT @nikitheblogger: Irre: Annalena Baerbock s[92 chars]t e�','RT @[32 chars]aerbock sagt, es bricht ihr das[25 chars]t e\ufffd']
 
     def test_find_sentiments(self):
         sentiment_values = ([0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0])
@@ -47,8 +48,8 @@ class TestTweetDfExtractor(unittest.TestCase):
         self.assertEqual(self.df.find_created_time(), created_at)
 
     def test_find_source(self):
-        source = ['<a href="http://twitter.com/download/android" rel="nofollow">Twitter for ','Android</a>','<a href="http://twitter.com/download/android" rel="nofollow">Twitter for ','Android</a>','<a href="http://twitter.com/download/android" rel="nofollow">Twitter for ''Android</a>','<a href="http://twitter.com/download/android" rel="nofollow">Twitter for ','Android</a>','<a href="http://twitter.com/download/android" rel="nofollow">Twitter for ','Android</a>']
         self.assertEqual(self.df.find_source(), source)
+        sourcen = ['<a h[18 chars]r.com/download/android" rel="nofollow">Twitter for Android</a>','<a h[18 chars]r.com/download/android" rel="nofollow">Twitter for ']
 
     def test_find_screen_name(self):
         name = ['McMc74078966', 'McMc74078966', 'McMc74078966', 'McMc74078966', 'McMc74078966']
